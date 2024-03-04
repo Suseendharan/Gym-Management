@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0;">
+
+    <div class="container" style="max-width: 800px; margin: 50px auto; padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <h1 style="text-align: center; color: #007bff; margin-bottom: 20px;">Member Details</h1>
+                <a href="{{ url_for('index') }}" style="display: block; text-align: center; margin-bottom: 20px; text-decoration: none; color: #007bff;">Back to Menu</a>
+        <div class="data-list" style="list-style: none; padding: 0; margin: 0;">
+             <h1>Members</h1>
+    <ul>
+        {% for member in members_data %}
+         <li style="border-bottom: 1px solid #ccc; padding: 10px 0;">
+                    <strong>ID:</strong> {{ member[0] }}<br>
+                    <strong>Name:</strong> {{ member[1] }}<br>
+                    <strong>Phone:</strong> {{ member[2] }}<br>
+                    <strong>Email:</strong> {{ member[3] }}<br>
+                    <strong>MemberShip type:</strong> {{ member[4] }}<br>
+                    <strong>Join Date:</strong> {{ member[5] }}
+                </li>
+
+        {% endfor %}
+    </ul>
+        <div class="add-form" style="margin-top: 20px; padding: 20px; background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <h2 style="margin-top: 0; color: #333; margin-bottom: 20px; text-align: center;">Add New Member</h2>
+            <form action="{{ url_for('insert_member') }}" method="POST">
+                <label for="name" style="display: block; margin-bottom: 5px;">Name:</label>
+                <input type="text" id="name" name="name" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;" required><br>
+                <label for="email" style="display: block; margin-bottom: 5px;">Email:</label>
+                <input type="email" id="email" name="email" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;" required><br>
+                <label for="phone" style="display: block; margin-bottom: 5px;">Phone:</label>
+                <input type="text" id="phone" name="phone" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;" required><br>
+                <label for="membership_type" style="display: block; margin-bottom: 5px;">membership_type:</label>
+                <input type="text" id="membership_type" name="membership_type" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;" required><br>
+                <label for="join_date" style="display: block; margin-bottom: 5px;">Join Date:</label>
+                <input type="date" id="join_date" name="join_date" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;" required><br>
+                <input type="submit" value="Submit" style="background-color: #007bff; color: #fff; border: none; cursor: pointer; padding: 10px; border-radius: 5px; transition: background-color 0.3s ease;">
+            </form>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
