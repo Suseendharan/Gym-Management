@@ -1,0 +1,48 @@
+
+-- Create the database
+CREATE DATABASE gymmanagement;
+
+-- Use the database
+USE gymmanagement;
+
+-- Create the Members table
+CREATE TABLE Members (
+    member_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    contact_number VARCHAR(15),
+    email VARCHAR(255),
+    membership_type VARCHAR(50),
+    start_date DATE
+);
+
+-- Create the Trainers table
+CREATE TABLE Trainers (
+    trainer_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    speciality VARCHAR(255)
+);
+
+-- Create the Classes table
+CREATE TABLE Classes (
+    class_id INT AUTO_INCREMENT PRIMARY KEY,
+    class_name VARCHAR(255) NOT NULL,
+    trainer_id INT,
+    time TIME
+);
+
+-- Create the Attendance table
+CREATE TABLE Attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    member_id INT,
+    class_id INT,
+    date DATE
+);
+
+-- Create the Payments table
+CREATE TABLE Payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    member_id INT,
+    amount DECIMAL(10, 2),
+    payment_date DATE
+);
+
